@@ -6,7 +6,7 @@
 
 ## 3. install python
 
-## 4. pip install python-telegram-bot,request,pyinstaller
+## 4. pip install python-telegram-bot,requests,pyinstaller
 
 ## 5. modify the code
 1. replace the "TELEGRAM_BOT_TOKEN","CHAT_API_KEY"  with yours
