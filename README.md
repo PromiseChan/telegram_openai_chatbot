@@ -18,7 +18,7 @@ OR
 ## 6. package to executable file
 check if the pyinstaller is installed, if not, install it first
 ```
-pi install pyinstaller
+pip install pyinstaller
 ```
 then run the package script
 ```
