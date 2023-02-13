@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e0ae23e9-13e9-44d2-8019-0465df970ace" name="Changes" comment="update md">
       <change beforePath="$PROJECT_DIR$/.github/workflows/upload-to-release.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/upload-to-release.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
       <workItem from="1676127613175" duration="472000" />
       <workItem from="1676133757838" duration="1278000" />
       <workItem from="1676135273934" duration="1697000" />
-      <workItem from="1676300077393" duration="3984000" />
+      <workItem from="1676300077393" duration="4346000" />
     </task>
     <task id="LOCAL-00001" summary="upload bot project">
       <created>1676127503962</created>
