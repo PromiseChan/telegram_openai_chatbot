@@ -20,8 +20,8 @@ jobs:
 
       - run : pwd
 
-      -run : ls -lh
-      
+      - run : ls -lh
+
       - run:
           pip install pyinstaller
 
