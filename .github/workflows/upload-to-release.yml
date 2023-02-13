@@ -21,6 +21,9 @@ jobs:
       - run : pwd
 
       - run : ls -lh
+      
+      - run:
+          pip install -r requirements.txt
 
       - run:
           pip install pyinstaller

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-nohup dist/telegramOpenAIChatbot > /dev/null 2>&1 &
+nohup dist/telegramOpenAIChatBot > /dev/null 2>&1 &
