@@ -13,12 +13,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Package Application
-        uses: JackMcKew/pyinstaller-action-linux@main
+      - name: Setup python environment
+        uses: actions/setup-python@v4
         with:
-          path: ./
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
 
-      - uses: actions/upload-artifact@v2
+      -name : Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      -name : Package
+        run: |
+          chmod +x *.sh
+          ./package.sh
+
+      -name : Upload to release
+      - uses: svenstaro/upload-release-action@v2
         with:
-          name: name-of-artifact
-          path: ./dist/linux
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
