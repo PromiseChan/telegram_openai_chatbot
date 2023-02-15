@@ -27,6 +27,7 @@ jobs:
         run: |
           chmod +x *.sh
           ./package.sh
+          mv dist/*  dist/telegramOpenAIChatBot-linux-amd64
 
       - name : Upload to release
         uses: softprops/action-gh-release@v0.1.15
