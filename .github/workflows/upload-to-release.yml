@@ -7,7 +7,7 @@ on:
       - "v*"
 
 jobs:
-  build:
+  release_linux_amd64:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,3 +35,33 @@ jobs:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           files: |
             dist/*
+            
+
+    release_windows_amd64:
+      runs-on: windows-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: Setup python environment
+          uses: actions/setup-python@v4.5.0
+          with:
+            python-version: '3.9'
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+        - name: Package to binary executable files
+          run: |
+            chmod +x *.sh
+            ./package.sh
+
+        - name: Upload to release
+          uses: softprops/action-gh-release@v0.1.15
+          if: startsWith(github.ref, 'refs/tags/')
+          with:
+            token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+            files: |
+              dist/*
