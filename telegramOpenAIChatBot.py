@@ -28,7 +28,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 # ### OPENAIL API INFO ####
 OPENAI_DOMAIN = "https://api.openai.com"
-OPENAI_CHAT_MODEL="text-davinci-003"
+OPENAI_CHAT_MODEL = "text-davinci-003"
 CHAT_API_KEY = os.getenv("CHAT_API_KEY")
 
 TEMPERATURE = 0.5
@@ -82,6 +82,14 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await update.message.reply_text("Help!")
 
 
+async def weekly_report_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """generate weekly report """
+    user_msg = "请帮我把以下的工作内容填充为一篇完整的周报,用 markdown 格式以分点叙述的形式输出:"
+    user_msg += update.message.text
+    reply_meg = get_from_openai_chat(user_msg, CHAT_API_KEY)
+    await update.message.reply_text(reply_meg)
+
+
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Echo the user message."""
     user_msg = update.message.text
@@ -96,11 +104,15 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 def main() -> None:
     """Start the bot."""
     # Create the Application and pass it your bot's token.
-    application = ApplicationBuilder().token(token=TELEGRAM_BOT_TOKEN).build()
+    application = ApplicationBuilder()\
+        .token(token=TELEGRAM_BOT_TOKEN)\
+        .build()
 
     # on different commands - answer in Telegram
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
+    # add weekly-report command
+    application.add_handler(CommandHandler("report", weekly_report_command))
 
     # on non command i.e message - echo the message on Telegram
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
