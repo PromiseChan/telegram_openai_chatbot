@@ -1,5 +1,10 @@
 # HOW TO QUICKLY BUILD YOUR OWN TELEGRAM CHAT BOT WITH OPENAI
 
+## features
+1. chat
+2. generate weekly report
+
+
 ## 1. apply for telegram bot api key
 
 ## 2. apply for openai api key
